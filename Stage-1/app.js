@@ -1,15 +1,20 @@
+// Variables
 const dayElement = document.getElementById("currentDay")
-const timeElement = document.getElementById("currentTime")
+let timeElement = document.getElementById("currentTime")
 
-const currentDate = new Date()
-const currentDay = currentDate.toLocaleString('en-us', {  weekday: 'long' })
-dayElement.innerHTML = currentDay
-
+// Function to get the time
 const getCurrentTime = () => {
-    const currentTime = currentDate.getUTCMilliseconds()
-    timeElement.innerHTML = currentTime
+    // New date module to generate the current date
+    const currentDate = new Date()
+    
+    const currentDay = currentDate.toLocaleString('en-us', {  weekday: 'long' })
+    dayElement.innerHTML = currentDay
+    const currentTime = currentDate.getTime()
+    timeElement.innerText = currentTime
+    console.log(currentTime)
 }
-
+getCurrentTime()
+// Getting the milliseconds value every millisecond
 setInterval(()=>{
     getCurrentTime()
 }, 1)
