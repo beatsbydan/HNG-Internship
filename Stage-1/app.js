@@ -11,7 +11,6 @@ const getCurrentTime = () => {
     dayElement.innerHTML = currentDay
     const currentTime = currentDate.getTime()
     timeElement.innerText = currentTime
-    console.log(currentTime)
 }
 getCurrentTime()
 // Getting the milliseconds value every millisecond
