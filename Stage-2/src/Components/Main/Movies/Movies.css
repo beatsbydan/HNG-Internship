@@ -1,0 +1,26 @@
+.movies{
+    width:100%;
+}
+.introduction{
+    justify-content: space-between;
+    align-items: center;
+}
+.seeMore{
+    align-items: center;
+    gap: 0.7rem;
+    color:#B91C1C;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.seeMore img{
+    width: 17px;
+    aspect-ratio: 1;
+}
+@media screen and (max-width: 400px) {
+    .introduction{
+        flex-direction: column;
+        justify-content: unset;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}

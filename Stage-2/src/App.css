@@ -4,6 +4,26 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
-:root{
+/* :root{
+  background: #666666;
 
+} */
+.App{
+  width: 100%;
+  position: relative;
+  min-height:100vh;
+}
+a{
+  text-decoration: none;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+ul{
+  list-style: none;
 }

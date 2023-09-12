@@ -1,0 +1,23 @@
+.navbar{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    position:relative;
+}
+.navbar h4, .navbar h5{
+    color: white;
+}
+.logo, .right{
+    align-items: center;
+    gap: 1rem;
+}
+.logo img{
+    width: 35px;
+    aspect-ratio: 1;
+}
+.right img{
+    width:25px;
+    aspect-ratio: 1;
+}

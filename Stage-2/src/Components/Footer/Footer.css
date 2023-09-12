@@ -1,0 +1,34 @@
+footer{
+    width:90%;
+    max-width: 500px;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    gap:2.2rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.socials{
+    max-width: 250px;
+}
+.links, .socials{
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+}
+footer h4{
+    font-weight: 700;
+}
+.subText{
+    color: #6B7280;
+    text-align: center;
+}
+@media screen and (max-width:400px) {
+    .links{
+        flex-direction: column;
+        justify-content: unset;
+        gap: 1.2rem;
+    }
+}

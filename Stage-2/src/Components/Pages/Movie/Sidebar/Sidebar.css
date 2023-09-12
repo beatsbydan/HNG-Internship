@@ -1,0 +1,53 @@
+.sideBar{
+    height: 100%;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    border: 0.1rem solid #0000004D;
+    border-radius: 0 2.5rem 2.5rem 0;
+}
+nav a, .navElement{
+    padding: 1rem;
+    align-items: center;
+    gap: 0.7rem;
+    color: #666666;
+    font-size: 0.85rem;
+    font-weight:600;
+}
+.currPage{
+    background: #BE123C1A;
+    border-right: 0.2rem solid #BE123C;
+    color: #BE123C;
+}
+.quizzes{
+    padding: 1rem;
+    border-radius: 0.7rem;
+    border: 0.1rem solid #BE123CB2;
+    background-color: #F8E7EB66;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+.quizzes h5{
+    color: #666666;
+}
+.quizzes button{
+    text-align: center;
+    background-color: #BE123C33;
+    padding: 0.7rem;
+    border-radius: 1.4rem;
+    width: 100%;
+    margin: auto;
+    border: none;
+    color: #BE123C;
+    font-weight: 600;
+}
+.quizzes small{
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #666666;
+}
+.navElement img{
+    width:20px;
+}
+@media screen and (max-width:900px) {
+    
+}
