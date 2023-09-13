@@ -1,10 +1,10 @@
 .sideBar{
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 .mainNav{
     height: 100%;
-    max-width: 250px;
+    max-width: 300px;
     justify-content: space-between;
     padding: 1.5rem 1rem;
     border: 0.1rem solid #0000004D;
@@ -69,7 +69,7 @@ nav a, .navElement{
 @media screen and (max-width:750px) {
     .sideBar{
         width: 100vw;
-        background-color: rgba(0, 0, 0, 0.16);
+        background-color: rgba(0, 0, 0, 0.724);
         position: fixed;
         transform: translateX(-120%);
         transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);

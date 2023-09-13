@@ -18,6 +18,8 @@ const MoviesList = () => {
                     return(
                         <Card
                             key={index}
+                            id={movie.id}
+                            getMovie={()=>ctx.getMovie(movie.id)}
                             img={imageUrl + movie.poster_path}
                             title={movie.title}
                             releaseDate={movie.release_date}

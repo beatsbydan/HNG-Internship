@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path = "/" element = {<Home/>}/>
-          <Route exact path = "/movie" element = {<Movie/>}/>
+          <Route exact path = "/movies/:id" element = {<Movie/>}/>
         </Routes>
       </div>
     </ContextProvider>

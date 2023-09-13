@@ -27,14 +27,11 @@ const ContextProvider = (props) => {
     const getMovie = (id) => {
         setIsPending(true)
         setTimeout(async ()=>{
-            await axios.get(`/${id}`,{
-                headers:{
-    
-                }
-            })
+            await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=95d73e105e4671bc9d1a42424844fdc0`)
             .then(res=>{
+                console.log(res)
                 if(res.status === 200 ){
-                    setMovie(res.status.movie)
+                    setMovie(res.data)
                     setIsPending(false)
                 }
             })

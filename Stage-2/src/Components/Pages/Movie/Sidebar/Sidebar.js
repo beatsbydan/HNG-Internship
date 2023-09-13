@@ -36,7 +36,7 @@ const Sidebar = (props) => {
                         <p>Upcoming</p>
                     </div>
                 </nav>
-                <TfiClose className="close" color="#BE123C" size={30} onClick={props.close}/>
+                <TfiClose className="close" color="white" size={30} onClick={props.close}/>
                 <div className='endAuth'>
                     <div className='quizzes flex-column'>
                         <h5>Play movie quizes and earn free tickets</h5>
