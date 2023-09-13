@@ -10,9 +10,9 @@ const MoviesList = () => {
     return (
         <ul className='moviesList'>
             {
-                ctx.isPending ? <Loading isPending= {ctx.isPending}/> 
+                ctx.isPending.searchPend ? <Loading isPending= {ctx.isPending.searchPend}/> 
                 : 
-                ctx.filteredMovies.length === 0 ? <h3 className="defaultText">Movie unavailable. <span><button onClick={ctx.getMovies}>Go back</button></span></h3> 
+                ctx.filteredMovies.length === 0 ? <h3 className="defaultText">Movie unavailable. <span><button onClick={()=>ctx.getMovies('')}>Go back</button></span></h3> 
                 :
                 ctx.filteredMovies.map((movie, index)=>{
                     return(
@@ -27,9 +27,9 @@ const MoviesList = () => {
                     )
                 })
             }
-            {ctx.filteredMovies.length < 10 && ctx.filteredMovies.length > 0 && !ctx.isPending ? 
+            {ctx.filteredMovies.length < 10 && ctx.filteredMovies.length > 0 && !ctx.isPending.searchPend ? 
                 <li>
-                    <button className='defaultButton' onClick={ctx.getMovies}>Go back</button>
+                    <button className='defaultButton' onClick={()=>ctx.filterMovies('')}>Go back</button>
                 </li>
                 :
                 <></>

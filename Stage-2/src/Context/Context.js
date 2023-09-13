@@ -4,7 +4,7 @@ const Context = React.createContext({
     movie: {},
     movies: [],
     filteredMovies: [],
-    isPending: false,
+    isPending: {},
     title: '',
     handleChange: ()=>{},
     getMovie: ()=>{},

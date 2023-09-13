@@ -7,7 +7,11 @@ import Loading from '../../../../UI/Loading/Loading'
 
 const CurrentMovie = (props) => {
   const ctx = useContext(Context)
+  
+  // Extracting the year from the release date
   const year = new Date(props.movie?.release_date).getFullYear()
+
+  // Function to convert and return the run time into hours and minutes
   const getHourAndMinute = (totalTime) => {
     const hour = totalTime / 60
     const minutes = totalTime % 60
@@ -16,12 +20,16 @@ const CurrentMovie = (props) => {
       minutes: minutes
     }
   }
+
+  // Extracted run time in hours
   const runtimeHour = Math.floor(getHourAndMinute(props.movie.runtime).hour)
+
+  // Extracted run time in minutes
   const runtimeMinutes = getHourAndMinute(props.movie.runtime).minutes
 
   return (
     <div className='currentMovie'>
-      {ctx.isPending ? <Loading isPending = {ctx.isPending}/> : Object.values(props.movie).length === 0 ? <h3 className='emptyText'>Nothing to see here.</h3>: 
+      {ctx.isPending.moviePend ? <Loading isPending = {ctx.isPending.moviePend}/> : Object.values(props.movie).length === 0 ? <h3 className='emptyText'>Nothing to see here.</h3>: 
         <>
           <div className="movieDetails flex-column">
             <div className="left flex-column">

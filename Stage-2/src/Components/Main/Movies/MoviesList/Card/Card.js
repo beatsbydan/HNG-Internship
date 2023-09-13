@@ -3,7 +3,10 @@ import './Card.css'
 import {Link} from 'react-router-dom'
 
 const Card = (props) => {
+
+    // Extracting the year from the release date
     const year = new Date(props.releaseDate).getFullYear()
+    
     return (
         <li className='card' data-testid ="movie-card">
             <Link to={`/movies/${props.id}`} onClick={props.getMovie}>

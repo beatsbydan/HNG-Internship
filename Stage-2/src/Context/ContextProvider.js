@@ -4,35 +4,78 @@ import axios from 'axios'
 import useAlert from '../Hooks/useAlert'
 
 const ContextProvider = (props) => {
+    
+    // Extracting the custom alert function
     const {setAlert} = useAlert()
+    
+    // Variable that holds the search parameter 
     const [title, setTitle] = useState('')
-    const [isPending, setIsPending] = useState(false)
+    
+    // variables to handle all the pend states
+    const [isPending, setIsPending] = useState({
+        moviesPend: false,
+        moviePend: false,
+        searchPend: false
+    })
+    
+    // Variable to hold all the movies fetched initially
     const [movies, setMovies] = useState([])
+    
+    // Variable to store the searched movie
     const [filteredMovies, setFilteredMovies] = useState([])
+    
+    // Variable to store the movie fetched by id
     const [movie, setMovie] = useState({})
+    
     const handleChange = (e) =>{
         setTitle(e.target.value)
     }
+
+    // Function to filter the movie by it's title
+
     const filterMovies = (title) =>{
-        setIsPending(true)
-        setTimeout(()=>{
-            const filteredMovie = movies.filter(movie=>{
-                return movie.title.toLowerCase() === title.toLowerCase()
+        if(title === ""){
+            setIsPending({
+                searchPend: true
             })
-            setFilteredMovies(filteredMovie)
-            setIsPending(false)
-            setTitle('')
-        },3500)
+            setTimeout(()=>{
+                setFilteredMovies(movies)
+                setIsPending({
+                    searchPend: false
+                })
+            },3500)
+        }
+        else{
+            setIsPending({
+                searchPend: true
+            })
+            setTimeout(()=>{
+                const filteredMovie = movies.filter(movie=>{
+                    return movie.title.toLowerCase() === title.toLowerCase()
+                })
+                setFilteredMovies(filteredMovie)
+                setIsPending({
+                    searchPend: false
+                })
+                setTitle('')
+            },3500)
+        }
     }
+
+    // Function to get a particular movie by its id
+
     const getMovie = (id) => {
-        setIsPending(true)
+        setIsPending({
+            moviePend: true
+        })
         setTimeout(async ()=>{
             await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=95d73e105e4671bc9d1a42424844fdc0`)
             .then(res=>{
-                console.log(res)
                 if(res.status === 200 ){
                     setMovie(res.data)
-                    setIsPending(false)
+                    setIsPending({
+                        moviePend: false
+                    })
                 }
             })
             .catch(err=>{
@@ -41,12 +84,17 @@ const ContextProvider = (props) => {
             })
         }, 3500)
     }
+
+    // Function to fetch the movies
+
     const getMovies = useCallback(() =>{
-        setIsPending(true)
+        setIsPending({
+            moviesPend: true,
+            searchPend: true
+        })        
         setTimeout(async ()=>{
             await axios.get('https://api.themoviedb.org/3/discover/movie?api_key=95d73e105e4671bc9d1a42424844fdc0')
             .then(res=>{
-                console.log(res)
                 if(res.status === 200 ){
                     let newMovies = []
                     for (let i = 0; i < 10; i++){
@@ -54,28 +102,32 @@ const ContextProvider = (props) => {
                     }
                     setMovies(newMovies)
                     setFilteredMovies(newMovies)
-                    setIsPending(false)
+                    setIsPending({
+                        moviesPend: false,
+                        searchPend: false
+                    })  
                 }
             })
             .catch(err=>{
-                console.log(err)
                 setAlert('failure', 'Something went wrong!')
                 return err
             })
         }, 3500)
     },[setAlert])
+
     useEffect(()=>{
         getMovies()
     },[getMovies])
+
     const value = {
         title:title,
-        handleChange: handleChange,
         movie: movie,
         movies: movies,
         filteredMovies: filteredMovies,
         isPending: isPending,
         getMovie: getMovie,
         getMovies: getMovies,
+        handleChange: handleChange,
         filterMovies: filterMovies
     }
     return (

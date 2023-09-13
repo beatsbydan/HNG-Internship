@@ -16,6 +16,7 @@
     right: 0;
     z-index: 1;
     animation: successful 2s ease-in-out;
+    font-family: var(--f-dm-sans);
 }
 .alert p{
     font-size: 0.9rem;
