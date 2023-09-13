@@ -1,6 +1,28 @@
 .movie{
     width: 100%;
     display: grid;
-    grid-template-columns: 20% 80%;
-    min-height:100vh
+    grid-template-columns: 30% 70%;
+    min-height:100vh;
+    font-family: var(--f-poppins);
+}
+.navigation{
+    display: none;
+}
+@media screen and (max-width:750px) {
+    .movie{
+        position: relative;
+        grid-template-columns: 15% 85%;
+    }
+    .navigation{
+        width: 100%;
+        display: block;
+        position: relative;
+    }
+    .openNav{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+    }
 }

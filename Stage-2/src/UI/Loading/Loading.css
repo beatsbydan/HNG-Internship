@@ -9,10 +9,8 @@
     height: 45px;
 }
 .loadingText{
-    color: #1D3557;
     text-align:center;
     font-weight:500;
-    font-size: 0.85rem;
 }
 .loadingText span{
     display: block;

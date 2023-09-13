@@ -2,12 +2,11 @@
   margin: 0;
   padding:0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
-/* :root{
-  background: #666666;
-
-} */
+:root{
+  --f-dm-sans: 'DM Sans', sans-serif;;
+  --f-poppins: 'Poppins', sans-serif;
+}
 .App{
   width: 100%;
   position: relative;

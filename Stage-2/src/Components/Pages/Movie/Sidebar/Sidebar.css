@@ -1,9 +1,15 @@
 .sideBar{
+    width: 100%;
     height: 100%;
+}
+.mainNav{
+    height: 100%;
+    max-width: 250px;
     justify-content: space-between;
     padding: 1.5rem 1rem;
     border: 0.1rem solid #0000004D;
     border-radius: 0 2.5rem 2.5rem 0;
+    position:relative;
 }
 nav a, .navElement{
     padding: 1rem;
@@ -26,6 +32,14 @@ nav a, .navElement{
     gap: 0.8rem;
     margin-bottom: 1.2rem;
 }
+.close{
+    position:absolute;
+    top: 50%;
+    transform: translateY( -50%);
+    left: 110%;
+    cursor:pointer;
+    display: none;
+}
 .quizzes h5{
     color: #666666;
 }
@@ -39,6 +53,7 @@ nav a, .navElement{
     border: none;
     color: #BE123C;
     font-weight: 600;
+    font-family: inherit;
 }
 .quizzes small{
     font-size: 0.65rem;
@@ -48,6 +63,23 @@ nav a, .navElement{
 .navElement img{
     width:20px;
 }
-@media screen and (max-width:900px) {
-    
+.sideBar.activeNav{
+    transform: translateX(0%);
+}
+@media screen and (max-width:750px) {
+    .sideBar{
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.16);
+        position: fixed;
+        transform: translateX(-120%);
+        transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+        z-index: 10;
+    }
+    .mainNav{
+        width: 90%;
+        background-color: white;
+    }
+    .close{
+        display: block;
+    }
 }
