@@ -9,7 +9,7 @@ const CurrentMovie = (props) => {
   const ctx = useContext(Context)
   
   // Extracting the year from the release date
-  const year = new Date(props.movie?.release_date).getFullYear()
+  // const year = new Date(props.movie?.release_date).getUTC()
 
   // Function to convert and return the run time into hours and minutes
   const getHourAndMinute = (totalTime) => {
@@ -21,11 +21,6 @@ const CurrentMovie = (props) => {
     }
   }
 
-  // Extracted run time in hours
-  const runtimeHour = Math.floor(getHourAndMinute(props.movie.runtime).hour)
-
-  // Extracted run time in minutes
-  const runtimeMinutes = getHourAndMinute(props.movie.runtime).minutes
 
   return (
     <div className='currentMovie'>
@@ -37,11 +32,11 @@ const CurrentMovie = (props) => {
                 <h4 className="description flex-row">
                   <span className='title' data-testid="movie-title">{props.movie.title}</span>
                   • 
-                  <span className='releaseDate' data-testid="movie-release-date">{year}</span>
+                  <span className='releaseDate' data-testid="movie-release-date">{props.movie.release_date}</span>
                   •
                   <span className='rated' >{!props.movie.adult ? 'PG-13' : '18+'}</span>
                   • 
-                  <span className='runtime' data-testid= "movie-runtime">{runtimeHour}h {runtimeMinutes}m </span>
+                  <span className='runtime' data-testid= "movie-runtime">{props.movie.runtime}m </span>
                 </h4>
                 <ul className="genreList flex-row">
                   {props.movie.genres?.map((genre, index)=>{
