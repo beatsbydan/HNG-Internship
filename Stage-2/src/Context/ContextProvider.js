@@ -93,7 +93,7 @@ const ContextProvider = (props) => {
             searchPend: true
         })        
         setTimeout(async ()=>{
-            await axios.get('https://api.themoviedb.org/3/discover/movie?api_key=95d73e105e4671bc9d1a42424844fdc0')
+            await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=95d73e105e4671bc9d1a42424844fdc0')
             .then(res=>{
                 if(res.status === 200 ){
                     let newMovies = []
