@@ -1,7 +1,10 @@
 import axios from 'axios'
 
 const ValidateAuth = async (entry) => {
+    const loginApi = ''
+
     let errors = {}
+
     if(entry.username === ""){
         errors.username = "Username cannot be empty."
     }
@@ -16,12 +19,16 @@ const ValidateAuth = async (entry) => {
         })
         .then(result=>{
             console.log(result)
-            if(res.status === 200){
+            if(result.status === 200){
                 errors.none = true
             }
         })
         .catch(error=>{
             console.log(error)
+            if(error.response.status === 401){
+                errors.username = 'Invalid credentials.'
+                errors.password = 'Invalid credentials.'
+            }
             errors.none = false
             return
         })

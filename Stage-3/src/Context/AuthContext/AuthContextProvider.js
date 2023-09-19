@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import AuthContext from './AuthContext.js'
 import useAlert from '../../Hooks/useAlert'
 import useIsProcessing from '../../Hooks/useIsProcessing'
+import ValidateAuth from '../../Components/Auth/ValidateAuth.js'
 
 const AuthContextProvider = (props) => {
     const {setAlert} = useAlert()
@@ -17,7 +18,7 @@ const AuthContextProvider = (props) => {
 
     const handleChange = (e) => {
         const {id, value} = e.target
-        setIsLoggedIn(prev => {
+        setLoginDetails(prev => {
             return (
                 {...prev, [id]: value}
             )
@@ -29,9 +30,12 @@ const AuthContextProvider = (props) => {
         let success = {}
         await ValidateAuth(loginDetails)
         .then(res=>{
+            setLoginErrors(res)
             if(res.none){
                 success.yes = true
+                setIsLoggedIn(true)
                 setIsProcessing(false)
+                localStorage.setItem('isLoggedIn', true)
             }
             else{
                 success.yes = false
@@ -41,13 +45,14 @@ const AuthContextProvider = (props) => {
         })
         return success
     }
+
     const value = {
-        loginDetails: {},
-        loginErrors: {},
-        isLoggedIn: false,
-        handleChange: ()=>{},
-        handleLogin: ()=>{},
-        logout:()=>{}
+        loginDetails: loginDetails,
+        loginErrors: loginErrors,
+        isLoggedIn: isLoggedIn,
+        setIsLoggedIn: setIsLoggedIn,
+        handleChange: handleChange,
+        handleLogin: handleLogin
     }
 
     return (
