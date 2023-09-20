@@ -1,4 +1,4 @@
-import useIsProcessing from "../../../Hooks/useIsProcessing"
+import useIsProcessing from "../../Hooks/useIsProcessing"
 import IsProcessing from './IsProcessing'
 
 const Processing = () => {

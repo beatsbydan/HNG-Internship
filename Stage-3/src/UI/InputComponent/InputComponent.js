@@ -16,19 +16,18 @@ const InputComponent = (props) => {
             {
                 props.type === 'password' 
                 ? 
-                <div className="passwordBlock">
+                <div className={props.error ? "errorField passwordBlock" : "passwordBlock"}>
                     <input
                         id={props.id}
                         type={isPassword ? "password" : "text"}
-                        placeholder={props.placeholder}
-                        className={props.error ? 'errorField' : ''}  
+                        placeholder={props.placeholder} 
                         value={props.value}
                         onChange={props.onChange}
                     />
                     {
-                        isPassword ? <AiOutlineEye className='eye' onClick={handlePasswordTypeChange} size={25} color={"gray"}/> 
+                        isPassword ? <AiOutlineEye className='eye' onClick={handlePasswordTypeChange} size={25} color={"black"}/> 
                         : 
-                        <AiOutlineEyeInvisible className='eye' onClick={handlePasswordTypeChange} size={25} color={"gray"}/>
+                        <AiOutlineEyeInvisible className='eye' onClick={handlePasswordTypeChange} size={25} color={"black"}/>
                     }
                 </div>
                 :  

@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import AuthContext from './AuthContext.js'
-import useAlert from '../../Hooks/useAlert'
 import useIsProcessing from '../../Hooks/useIsProcessing'
-import ValidateAuth from '../../Components/Auth/ValidateAuth.js'
+import ValidateAuth from '../../Components/Pages/Auth/ValidateAuth.js'
+import {onAuthStateChanged, signOut} from 'firebase/auth'
+import {auth} from '../../firebase-config.js'
 
 const AuthContextProvider = (props) => {
-    const {setAlert} = useAlert()
-    const {setIsProcessing} = useIsProcessing()
+    const {setProcessing} = useIsProcessing()
     const [loginDetails, setLoginDetails] = useState({
         username: '',
         password: ''
@@ -19,14 +19,12 @@ const AuthContextProvider = (props) => {
     const handleChange = (e) => {
         const {id, value} = e.target
         setLoginDetails(prev => {
-            return (
-                {...prev, [id]: value}
-            )
+            return {...prev, [id]: value}
         })
     }
     
     const handleLogin = async () => {
-        setIsProcessing(true)
+        setProcessing(true)
         let success = {}
         await ValidateAuth(loginDetails)
         .then(res=>{
@@ -34,25 +32,38 @@ const AuthContextProvider = (props) => {
             if(res.none){
                 success.yes = true
                 setIsLoggedIn(true)
-                setIsProcessing(false)
-                localStorage.setItem('isLoggedIn', true)
+                setProcessing(false)
             }
             else{
                 success.yes = false
-                setIsProcessing(false)
-                setAlert('failure', 'Something went wrong!')
+                setProcessing(false)
             }
         })
         return success
     }
+    onAuthStateChanged(auth, (currentUser)=>{
+        if(currentUser){
+            setIsLoggedIn(true)
+        }
+    })
 
+    const logout = async () => {
+        let success = {}
+        await signOut(auth)
+        .then(()=>{
+            success.yes = true
+            setIsLoggedIn(false)
+        })    
+        return success
+    }
     const value = {
         loginDetails: loginDetails,
         loginErrors: loginErrors,
         isLoggedIn: isLoggedIn,
         setIsLoggedIn: setIsLoggedIn,
         handleChange: handleChange,
-        handleLogin: handleLogin
+        handleLogin: handleLogin,
+        logout: logout
     }
 
     return (
