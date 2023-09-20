@@ -23,7 +23,7 @@ const Login = () => {
             <form className="authForm" onSubmit={handleSubmit}>
                 <InputComponent
                     id={"username"}
-                    label={"Email"}
+                    label={"Email:"}
                     type={"text"}
                     value={ctx.loginDetails.username}
                     error={ctx.loginErrors.username}
@@ -32,7 +32,7 @@ const Login = () => {
                 />
                 <InputComponent
                     id={"password"}
-                    label={"Password"}
+                    label={"Password:"}
                     type={"password"}
                     value={ctx.loginDetails.password}
                     error={ctx.loginErrors.password}

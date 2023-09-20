@@ -1,0 +1,12 @@
+.home{
+    padding-bottom: 7rem;
+}
+.home h2{
+    margin-top: 2rem;
+    text-align: center
+}
+.home p{
+    margin-top: 1rem;
+    color: gray;
+    text-align: center;
+}

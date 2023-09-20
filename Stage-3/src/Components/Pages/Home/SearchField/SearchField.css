@@ -1,0 +1,30 @@
+.searchField{
+    width: 90%;
+    max-width: 650px;
+    margin: 2.5em auto 4em auto;
+    position:relative;
+    padding: 0.8rem;
+    border: 0.1rem solid black;
+    border-radius: 0.3rem;
+}
+.searchField input{
+    width: 100%;
+    font-size: 0.95rem;
+    border: none;
+}
+.searchField input::placeholder{
+    font-size: 0.8rem;
+    letter-spacing: 0.07rem;
+    font-weight: 500;
+    color: gray;
+}
+.searchField input:focus{
+    outline:none;
+}
+.searchButton{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    cursor:pointer;
+}

@@ -7,6 +7,8 @@ import Login from './Components/Pages/Auth/Login';
 import Home from './Components/Pages/Home/Home';
 import { AnimatePresence } from 'framer-motion';
 import Processing from './UI/IsProcessing/Processing';
+import PersistLogin from './Components/Pages/Auth/PersistLogin/PersistLogin';
+import ProtectedRoutes from './Components/Pages/Auth/ProtectedRoutes/ProtectedRoutes';
 
 function App() {
   const location = useLocation()
@@ -21,7 +23,13 @@ function App() {
               <Routes location={location} key={location.pathname}>
                 <Route path={"/"} element={<LandingPage/>}/>
                 <Route path={"/login"} element={<Login/>}/>
-                <Route path={"/dashboard"} element = {<Home/>}/>
+
+                <Route element={<PersistLogin/>}>
+                  <Route element={<ProtectedRoutes/>}>
+                    <Route path={"/dashboard"} element = {<Home/>}/>
+                  </Route>
+                </Route>
+
               </Routes>
             </AnimatePresence>
           </main>

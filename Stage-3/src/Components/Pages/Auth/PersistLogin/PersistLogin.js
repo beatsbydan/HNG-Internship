@@ -1,8 +1,8 @@
-import useRefresh from "../../../Hooks/useRefresh";
-import useAuth from "../../../Hooks/useAuth";
+import useRefresh from "../../../../Hooks/useRefresh";
+import useAuth from "../../../../Hooks/useAuth";
 import React, {useState, useEffect} from 'react'
 import { Outlet } from "react-router-dom";
-import Loading from "../../../UI/Loading/Loading";
+import Loading from "../../../../UI/Loading/Loading";
 
 const PersistLogin = () => {
     const [pending, setPending] = useState(true)
@@ -13,7 +13,8 @@ const PersistLogin = () => {
         ? 
         setTimeout(()=>{
             refresh()
-        },2500) 
+            setPending(false)
+        },3500) 
         : 
         setPending(false)
     },[isLoggedIn, refresh])

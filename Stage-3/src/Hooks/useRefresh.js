@@ -1,16 +1,20 @@
 import useAuth from './useAuth'
+import {auth} from '../firebase-config.js'
+import {onAuthStateChanged} from 'firebase/auth'
+
 
 const useRefresh = () => {
     const {setIsLoggedIn} = useAuth()
-    const userIsLoggedIn = localStorage.getItem('isLoggedIn')
 
     const refresh = () => {
-        if(!userIsLoggedIn){
-            setIsLoggedIn(false)
-        }
-        else{
-            setIsLoggedIn(true)
-        }
+        onAuthStateChanged(auth, (currentUser)=>{
+            if(!currentUser){
+                setIsLoggedIn(false)
+            }
+            else{
+                setIsLoggedIn(true)
+            }
+        })
     }
     return refresh
 }
