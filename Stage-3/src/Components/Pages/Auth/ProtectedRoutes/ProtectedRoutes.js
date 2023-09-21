@@ -1,11 +1,10 @@
 import useAuth from '../../../../Hooks/useAuth'
-import {Outlet} from 'react-router-dom'
-import Unauthorized from '../Unauthorized/Unauthorized'
+import {Outlet, Navigate} from 'react-router-dom'
 
 const ProtectedRoutes = () => {
     const {isLoggedIn} = useAuth()
 
-    return isLoggedIn ? <Outlet/> : <Unauthorized/>
+    return isLoggedIn ? <Outlet/> : <Navigate to='/unauthorized'/>
 }
 
 export default ProtectedRoutes

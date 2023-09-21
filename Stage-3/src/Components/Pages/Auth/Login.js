@@ -1,10 +1,12 @@
 import React, {useContext} from 'react'
-import {useNavigate} from 'react-router-dom' 
+import {useNavigate, Link} from 'react-router-dom' 
 import './Login.css'
 import Transition from '../../../UI/Transition/Transition'
 import AuthContext from '../../../Context/AuthContext/AuthContext'
 import InputComponent from '../../../UI/InputComponent/InputComponent'
 import {BiLogIn} from 'react-icons/bi'
+import {LiaArrowCircleLeftSolid} from 'react-icons/lia'
+
 const Login = () => {
     const ctx = useContext(AuthContext)
     const navigate = useNavigate()
@@ -19,6 +21,7 @@ const Login = () => {
     }
     return (
         <div className="login">
+            <Link to={"/"}><LiaArrowCircleLeftSolid color="black" size={35}/></Link>
             <h1>LOGIN <span><BiLogIn color={"black"} size={55}/></span></h1>
             <form className="authForm" onSubmit={handleSubmit}>
                 <InputComponent

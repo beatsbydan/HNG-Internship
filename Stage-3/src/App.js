@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 import Processing from './UI/IsProcessing/Processing';
 import PersistLogin from './Components/Pages/Auth/PersistLogin/PersistLogin';
 import ProtectedRoutes from './Components/Pages/Auth/ProtectedRoutes/ProtectedRoutes';
+import Unauthorized from './Components/Pages/Auth/Unauthorized/Unauthorized';
 
 function App() {
   const location = useLocation()
@@ -21,15 +22,18 @@ function App() {
             <Processing/>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
+                {/* REGULAR ROUTES */}
+                <Route path={"/unauthorized"} element={<Unauthorized/>}/>
                 <Route path={"/"} element={<LandingPage/>}/>
                 <Route path={"/login"} element={<Login/>}/>
 
+                {/* PERSIST LOGIN */}
                 <Route element={<PersistLogin/>}>
                   <Route element={<ProtectedRoutes/>}>
                     <Route path={"/dashboard"} element = {<Home/>}/>
                   </Route>
                 </Route>
-
+                
               </Routes>
             </AnimatePresence>
           </main>

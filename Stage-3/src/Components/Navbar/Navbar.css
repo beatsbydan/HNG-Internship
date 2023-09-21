@@ -1,11 +1,17 @@
 .navbar{
     width:100%;
+    max-width: 1000px;
     display:flex;
     flex-direction:row;
     justify-content:space-between;
     align-items: center;
     border-bottom: 0.1rem solid black;
     padding: 1.8rem 5% 1.2rem 5%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    background-color: white;
 }
 .navbar img{
     width: 50px;
