@@ -1,0 +1,25 @@
+.fileContent button{
+    width: 100%;
+    max-width: 150px;
+    font-weight: 600;
+    margin-top:1.5rem;
+    background:rgba(18, 11, 72, 1);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+.saveVideo{
+    width: 100%;
+    max-width: 550px;
+    margin:2rem auto;
+    text-align: center;
+}
+@media(hover: hover){
+    .fileContent button:hover{
+        opacity: 0.8;
+    }
+}

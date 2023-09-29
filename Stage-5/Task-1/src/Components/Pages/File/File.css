@@ -1,0 +1,12 @@
+.file{
+    width: 100%;
+    min-height: 100vh;
+}
+header{
+    width: 100%;
+    border-bottom: 0.15em solid rgba(0, 0, 0, 0.043);
+}
+footer{
+    width:100%;
+    background-color:rgba(18, 11, 72, 1);
+}

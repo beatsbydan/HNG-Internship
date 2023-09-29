@@ -1,0 +1,44 @@
+.howItWorks{
+    width: 100%;
+    margin: 3rem auto;
+    padding: 5%;
+    text-align: center;
+}
+.howItWorks h2{
+    margin-bottom: 4rem;
+}
+.howItWorks h3{
+    color:rgba(27, 35, 61, 1);
+    margin-top: 1.2rem;
+}
+.howItWorks p{
+    color:rgba(97, 97, 99, 1);
+    margin-top: 1rem;
+    line-height: 1.5em;
+}
+.steps{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3%;
+    margin-top: 2rem;
+}
+.step{
+    width: 100%;
+    margin:auto;
+}
+.stepImg{
+    width:50px;
+}
+.demoImg{
+    width: 100%;
+}
+@media screen and (max-width:800px) {
+    .steps{
+        grid-template-columns: unset;
+    }
+    .step{
+        max-width: 500px;
+        margin:auto;
+    }
+}

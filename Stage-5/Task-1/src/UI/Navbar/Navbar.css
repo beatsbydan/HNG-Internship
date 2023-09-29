@@ -1,0 +1,81 @@
+
+.navbar{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 1.5rem 0 1rem 0;
+    margin: auto;
+}
+.menu{
+    display:none;
+    cursor:pointer;
+}
+.navbar img{
+    margin-left: -0.5rem;
+}
+.innerNav{
+    width:59%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.navLeft{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    gap: 3.5rem;
+}
+.navLeft li a{
+    color: black;
+    font-weight: 600;
+}
+.navbar button{
+    background: transparent;
+    color:rgba(18, 11, 72, 1);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+@media screen and (max-width:700px) {
+    .menu{
+        display:block;
+        position: relative;
+        z-index: 10;
+    }
+    .close{
+        position: fixed;
+        right: 5%;
+    }
+    .innerNav{
+        width: 85%;
+        max-width: 300px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.817);
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        gap: 3.5rem;
+        transform: translateX(100%);
+        z-index: 1;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .active{
+        transform: translateX(0);
+    }
+    .navLeft{
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+    .navbar button{
+        color: white;
+    }
+    .navLeft li a{
+        color: white;
+    }
+}
